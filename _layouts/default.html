@@ -1,0 +1,29 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="nl">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include_cached svg/icons.svg %}
+
+    <h1 class="hidden">{{ site.title }}</h1>
+
+    {% include header.html %}
+
+    <main>
+      {{ content }}
+    </main>
+
+    {% include_cached footer.html %}
+    {% include_cached scripts.html %}
+
+    {% css css/non-critical %}
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  </body>
+</html>

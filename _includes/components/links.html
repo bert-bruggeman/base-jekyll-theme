@@ -1,0 +1,7 @@
+<ul>
+{% for link in include.items %}
+  <li>
+    <a class="{{ link.type }}"{% if item.link contains 'http' %} target="_blank"{% endif %}href="{{ link.url }}">{{ link.title }}</a>
+  </li>
+{% endfor %}
+</ul>

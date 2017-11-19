@@ -1,0 +1,37 @@
+{% assign form = site.forms | where:"name", include.form | first %}
+
+<form class="block" action="{{ form.success }}" name="contact" netlify netlify-honeypot="gotcha">
+  <h3 class="hidden">{{ form.title }}</h3>
+  <input type="text" name="gotcha" style="display:none" />
+
+  {% for field in form.fields %}
+  <div{% if field.width %} style="width: {{ field.width }}"{% endif %}>
+
+    {% if field.type != 'submit' %}
+    <label>{{ field.label }}{% if field.required %} <span>*</span>{% endif %}</label>
+    {% endif %}
+
+    {% if field.type == 'textarea' %}
+    <textarea name="{{ field.name }}"{% if field.required %} required{% endif %}></textarea>
+
+    {% elsif field.type == 'select' %}
+    <select name="{{ field.name }}"{% if field.required %} required{% endif %}>
+      {% for option in field.options %}
+      <option value="{{ option }}">{{ option }}</option>
+      {% endfor %}
+    </select>
+
+    {% elsif field.type == 'submit' %}
+    <input class="button" type="submit" value="{{ field.label }}"/>
+
+    {% elsif field.type == 'date' %}
+    {% assign flatpickr = true %}
+    <input type="text" data-datepicker name="{{ field.name }}"{% if field.placeholder %} placeholder="{{ field.placeholder }}"{% endif %}{% if field.required %} required{% endif %}/>
+
+    {% else %}
+    <input type="{{ field.type }}" name="{{ field.name }}"{% if field.placeholder %} placeholder="{{ field.placeholder }}"{% endif %}{% if field.required %} required{% endif %}/>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+</form>

@@ -1,0 +1,17 @@
+<header>
+  <a href="/">
+    {% img svg/logo.svg %}
+  </a>
+  {% include navigation.html %}
+</header>
+
+{% if page.image %}
+<figure class="banner">
+  {% include_cached components/image.html file=page.image style='banner' alt=page.title %}
+  {% if page.caption.quote %}
+  <figcaption class="{{ page.caption.align }}">
+    <blockquote>{{ page.caption.quote | markdownify }}</blockquote>
+  </figcaption>
+  {% endif %}
+</figure>
+{% endif %}

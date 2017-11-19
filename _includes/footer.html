@@ -1,0 +1,27 @@
+{% assign info = site.data.info %}
+
+<footer>
+
+  <div class="vcard">
+
+    {% if info.name %}<span class="fn org">{{ info.name }}</span>{% endif %}
+
+    {% if info.street or info.postal or info.locality %}
+    <address class="adr">
+      {% if info.street %}<span class="street-address">{{ info.street }}</span></br>{% endif %}
+      {% if info.postal %}<span class="postal">{{ info.postal }}</span>{% endif %}
+      {% if info.locality %}<span class="locality">{{ info.locality }}</span>{% endif %}
+    </address>
+    {% endif %}
+
+    {% if info.tel %}<span class="tel">{{ info.tel }}</span>{% endif %}
+    {% if info.mobile %}<span class="mobile">{{ info.mobile }}</span>{% endif %}
+    {% if info.email %}<a class="email" href="mailto:{{ info.email | encode_email }}">{{ info.email }}</a>{% endif %}
+
+  </div>
+
+  <div class="credentials">
+    <span>Design & Development:</span> <a href="mailto:{{ "bert.bruggeman@gmail.com" | encode_email }}">Bert Bruggeman</a>
+  </div>
+
+</footer>

@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<article {% if sidebar %}class="sidebar"{% endif %}>
+  <h2><span>{{ page.title }}</span></h2>
+  {{ content | replace: "\", "<br />" }}
+</article>
+
+{% capture sidebar %}
+
+  {% if page.info.image %}
+  <figure>
+    {% include_cached components/image.html file=page.info.image style='sidebar' alt=page.title %}
+  </figure>
+  {% endif %}
+
+  {% if page.info.description %}
+  {% include components/block.html item=page.info default-title="Meer informatie" %}
+  {% endif %}
+
+  {% if page.datalist.description or page.datalist.items != nil %}
+  {% include components/block.html item=page.datalist type="datalist" default-title="Opsomming" %}
+  {% endif %}
+
+  {% if page.links.description or page.links.items != nil %}
+  {% include components/block.html item=page.links class="links" type="links" default-title="Links" %}
+  {% endif %}
+
+  {% if page.buttons != nil %}
+  {% include components/buttons.html items=page.buttons %}
+  {% endif %}
+
+{% endcapture %}
+
+{% assign sidebar = sidebar | strip %}
+
+{% if sidebar != "" %}
+<aside>
+  {{ sidebar }}
+</aside>
+{% endif %}

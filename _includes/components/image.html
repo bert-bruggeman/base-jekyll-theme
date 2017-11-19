@@ -1,0 +1,26 @@
+{% assign style = site.cloudinary[include.style] %}
+
+{% capture src %}
+https://res.cloudinary.com/{{ site.cloudinary.id }}/image/upload/w_{{ style.width }},h_{{ style.height }},c_{{ style.crop }},f_auto{{ include.file }}
+{% endcapture %}
+
+
+{% if style.sizes %}
+<noscript>
+  <img src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
+</noscript>
+<picture>
+  {% for size in style.sizes %}
+  <source media="({{ size.media }})" srcset="https://res.cloudinary.com/{{ site.cloudinary.id }}/image/upload/w_{{ size.width }},h_{{ size.height }},c_{{ style.crop }},f_auto{{ include.file }}">
+  {% endfor %}
+  <img src="{{ src }}" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
+</picture>
+
+
+{% else %}
+<noscript>
+  <img src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
+</noscript>
+<img src="{{ src }}" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
+
+{% endif %}
