@@ -21,6 +21,26 @@
       {% endfor %}
     </select>
 
+    {% elsif field.type == 'checkboxes' %}
+    <ul class="checkboxes">
+      {% for option in field.options %}
+      <li>
+        <input type="checkbox" name="{{ option }}" value="{{ option }}" />
+        <label for="{{ option }}">{{ option }}</label>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% elsif field.type == 'radios' %}
+    <ul class="radios">
+      {% for option in field.options %}
+      <li>
+        <input type="radio" name="{{ option }}" value="{{ option }}" />
+        <label for="{{ option }}">{{ option }}</label>
+      </li>
+      {% endfor %}
+    </ul>
+
     {% elsif field.type == 'submit' %}
     <input class="button" type="submit" value="{{ field.label }}"/>
 
