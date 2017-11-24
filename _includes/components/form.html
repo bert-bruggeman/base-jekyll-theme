@@ -32,8 +32,8 @@
     {% elsif field.type == 'radios' %}
     <fieldset class="radios">
       {% for option in field.options %}
-        <input type="radio" name="{{ option }}" value="{{ option }}" />
-        <label for="{{ option }}">{{ option }}</label>
+        <input type="radio" id="radio-{{ option | slugify }}" value="{{ option }}" />
+        <label for="radio-{{ option | slugify }}">{{ option }}</label>
       {% endfor %}
     </fieldset>
 
