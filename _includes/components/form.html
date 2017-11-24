@@ -25,7 +25,7 @@
     <fieldset class="checkboxes">
       {% for option in field.options %}
         <input type="checkbox" name="{{ field.name }}" id="checkbox-{{ option | slugify }}" value="{{ option }}" />
-        <label for="{{ checkbox-{{ option | slugify }}">{{ option }}</label>
+        <label for="checkbox-{{ option | slugify }}">{{ option }}</label>
       {% endfor %}
     </fieldset>
 
