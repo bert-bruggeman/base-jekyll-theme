@@ -24,15 +24,15 @@
     {% elsif field.type == 'checkboxes' %}
     <fieldset class="checkboxes">
       {% for option in field.options %}
-        <input type="checkbox" name="{{ option }}" value="{{ option }}" />
-        <label for="{{ option }}">{{ option }}</label>
+        <input type="checkbox" name="{{ field.name }}" id="checkbox-{{ option | slugify }}" value="{{ option }}" />
+        <label for="{{ checkbox-{{ option | slugify }}">{{ option }}</label>
       {% endfor %}
     </fieldset>
 
     {% elsif field.type == 'radios' %}
     <fieldset class="radios">
       {% for option in field.options %}
-        <input type="radio" id="radio-{{ option | slugify }}" value="{{ option }}" />
+        <input type="radio" name="{{ field.name }}" id="radio-{{ option | slugify }}" value="{{ option }}" />
         <label for="radio-{{ option | slugify }}">{{ option }}</label>
       {% endfor %}
     </fieldset>
