@@ -22,8 +22,9 @@ layout: compress
     {% include_cached footer.html %}
     {% include_cached scripts.html %}
 
-    {% css css/non-critical %}
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+    {% asset css/non-critical %}
+
+    <link href="https://fonts.googleapis.com/css?family={% site.webfont %}" rel="stylesheet">
 
   </body>
 </html>
