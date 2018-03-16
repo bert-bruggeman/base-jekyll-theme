@@ -1,26 +1,20 @@
-{% assign style = site.cloudinary[include.style] %}
+{% assign style = site.image_styles[include.style] %}
+{% assign quality = site.image_styles.quality %}
 
 {% capture src %}
-https://res.cloudinary.com/{{ site.cloudinary.id }}/image/upload/w_{{ style.width }},h_{{ style.height }},c_{{ style.crop }},f_auto{{ include.file }}
+{% asset '{{ include.image }}' @path magick:resize='{{ style.width }}'^x'{{ style.height }}'^ magick:crop='{{ style.width }}'x'{{ style.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}
 {% endcapture %}
 
-
-{% if style.sizes %}
 <noscript>
   <img src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
 </noscript>
 <picture>
-  {% for size in style.sizes %}
-  <source media="({{ size.media }})" srcset="https://res.cloudinary.com/{{ site.cloudinary.id }}/image/upload/w_{{ size.width }},h_{{ size.height }},c_{{ style.crop }},f_auto{{ include.file }}">
-  {% endfor %}
-  <img src="{{ src }}" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
+    {% if style.sizes %}
+    {% for size in style.sizes %}
+    <source media="({{ size.media }})" srcset="
+{% asset '{{ include.image }}' @path magick:resize='{{ size.width }}'^x'{{ size.height }}'^ magick:crop='{{ size.width }}'x'{{ size.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}">
+    {% endfor %}
+    {% endif %}
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
 </picture>
 
-
-{% else %}
-<noscript>
-  <img src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
-</noscript>
-<img src="{{ src }}" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
-
-{% endif %}

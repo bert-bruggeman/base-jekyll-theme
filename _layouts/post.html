@@ -5,9 +5,5 @@ layout: default
 <article>
   <h2>{{ page.title }}</h2>
   {{ content | replace: "\", "<br />" }}
-
-    {% if page.cards %}
-        {% include components/cards.html items=page.cards %}
-    {% endif %}
-
+  {% include components/share.html %}
 </article>

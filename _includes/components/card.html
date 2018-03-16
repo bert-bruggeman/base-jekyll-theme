@@ -1,0 +1,24 @@
+<article class="card">
+
+    {% if include.image %}
+    {% include components/image.html image=include.image style="card" %}
+
+    {% endif %}
+
+    <div>
+        <h3>{{ include.title }}</h3>
+
+        {{ include.content | markdownify | replace: "\", "<br/>" }}
+
+        {% if include.link %}
+        {% include components/link.html url=include.url class=read-more title=site.data.vocabulary.read-more %}
+        {% endif %}
+
+        {% if include.url%}
+        {% include components/link.html url=include.url class=read-more title=site.data.vocabulary.read-more %}
+        {% endif %}
+
+    </div>
+
+
+</article>
