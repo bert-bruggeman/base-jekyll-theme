@@ -1,0 +1,51 @@
+// FORM COMPONENT
+@mixin form(
+    $item-selector: 'form div',
+    $item-margin: $spacing-tiny 0,
+    $fieldset-background-color: transparent,
+    $fieldset-border: 0,
+    $fieldset-margin: 0,
+    $fieldset-padding: 0,
+    $legend-font-weight: $font-weight-bold,
+    $legend-margin-bottom: $spacing-tiny,
+    $label-font-weight: $font-weight-bold,
+    $label-margin-bottom: $spacing-tiny
+) {
+
+    #{$item-selector} {
+      margin: $item-margin;
+    }
+
+    fieldset {
+      background-color: $fieldset-background-color;
+      border: $fieldset-border;
+      margin: $fieldset-margin;
+      padding: $fieldset-padding;
+    }
+
+    legend {
+      color: inherit;
+      display: table;
+      font-weight: $legend-font-weight;
+      margin-bottom: $legend-margin-bottom;
+      max-width: 100%;
+      padding: 0;
+      white-space: normal;
+    }
+
+    label {
+      display: block;
+      font-weight: $label-font-weight;
+      margin-bottom: $label-margin-bottom;
+
+      span {
+        color: $color-red;
+      }
+    }
+
+    progress {
+      display: inline-block;
+      vertical-align: baseline;
+    }
+
+}

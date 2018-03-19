@@ -1,0 +1,70 @@
+@mixin hamburger-icon (
+    $border-radius: 1px,
+    $color: $color-text,
+    $height: 2px,
+    $margin: 15px,
+    $selector: "body > nav > a > span",
+    $spacing: 8px,
+    $width: 24px,
+) {
+
+    #{$selector} {
+        position: relative;
+        margin: $margin auto;
+        text-indent: 9999%;
+        background-color: $color;
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            background-color: inherit;
+        }
+
+        &:before {
+            top: $spacing;
+        }
+
+        &:after {
+            top: -$spacing;
+        }
+
+    }
+
+
+    #{$selector},
+    #{$selector}:before,
+    #{$selector}:after {
+        display: block;
+        width: $width;
+        height: $height;
+        border-radius: $border-radius;
+    }
+
+}
+
+
+@mixin hamburger-icon-close (
+    $selector: "body > nav > a.active > span",
+) {
+    #{$selector} {
+        transform: rotate(45deg);
+
+        &:before,
+        &:after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+
+    }
+
+    #{$selector},
+    #{$selector}:before,
+    #{$selector}:after {
+        transition: transform 0.25s ease-in-out;
+    }
+
+}
+

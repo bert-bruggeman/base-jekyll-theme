@@ -1,0 +1,27 @@
+// TABLE COMPONENT
+@mixin table(
+    $border: 1px solid $color-border,
+    $font-weight-header: $font-weight-bold,
+    $padding: .2em .4em,
+    $text-align: left,
+    $width: 100%
+) {
+    table {
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: $width;
+    }
+
+    td,
+    th {
+        border: $border;
+        padding: $padding;
+        text-align: $text-align;
+        vertical-align: middle;
+    }
+
+    th {
+        font-weight: $font-weight-header;
+    }
+
+}

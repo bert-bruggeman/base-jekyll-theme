@@ -1,0 +1,117 @@
+// BUTTON COMPONENT
+@mixin button(
+    $background: null,
+    $background-focus: null,
+    $background-hover: null,
+    $background-color: $color-primary,
+    $background-color-focus: null,
+    $background-color-hover: lighten($color-primary, 5),
+    $border: null,
+    $border-focus: null,
+    $border-hover: null,
+    $border-color: null,
+    $border-color-focus: null,
+    $border-color-hover: null,
+    $border-radius: null,
+    $border-style: null,
+    $border-width: null,
+    $border-width-focus: null,
+    $border-width-hover: null,
+    $box-shadow: null,
+    $box-shadow-focus: null,
+    $box-shadow-hover: null,
+    $color: $color-white,
+    $color-focus: null,
+    $color-hover: $color-white,
+    $font-weight: $font-weight-bold,
+    $letter-spacing: null,
+    $margin: 0 0 $spacing-tiny,
+    $padding: $spacing-small,
+    $selector: 'input[type="submit"], input[type="reset"], button, .button',
+    $text-align: center,
+    $text-shadow: null,
+    $text-shadow-focus: null,
+    $text-shadow-hover: null,
+    $text-transform: null,
+    $transition: background-color 0.2s ease-in-out
+) {
+    #{$selector} {
+        appearance: none;
+        background: $background;
+        background-color: $background-color;
+        border: $border;
+        border-color: $border-color;
+        border-radius: $border-radius;
+        border-style: $border-style;
+        border-width: 0;
+        color: $color;
+        cursor: pointer;
+        display: block;
+        font-weight: $font-weight;
+        letter-spacing: $letter-spacing;
+        line-height: 1;
+        margin: $margin;
+        padding: $padding;
+        outline: 0;
+        text-align: $text-align;
+        text-transform: $text-transform;
+        transition: $transition;
+        white-space: nowrap;
+        width: 100%;
+        user-select: none;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: $background-hover;
+            background-color: $background-color-hover;
+            border: $border-hover;
+            border-color: $border-color-hover;
+            border-width: $border-width-hover;
+            box-shadow: $box-shadow-hover;
+            color: $color-hover;
+            text-shadow: $text-shadow-hover;
+        }
+
+        &:focus,
+        &:active {
+            background: $background-focus;
+            background-color: $background-color-focus;
+            border: $border-focus;
+            border-color: $border-color-focus;
+            border-width: $border-width-focus;
+            box-shadow: $box-shadow-focus;
+            color: $color-focus;
+            text-shadow: $text-shadow-focus;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+        border: 0;
+    }
+
+    // set global variables
+    $button-selector: $selector !global;
+}
+
+
+// inline button component
+@mixin button-inline(
+    $margin: 0 $spacing-small $spacing-tiny 0,
+    $selector: $button-selector
+) {
+    #{$selector} {
+        display: inline-block;
+        margin: $margin;
+        width: auto;
+    }
+}

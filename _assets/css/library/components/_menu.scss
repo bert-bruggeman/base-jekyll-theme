@@ -1,0 +1,60 @@
+// MENU COMPONENTS
+@mixin menu (
+    $background: null,
+    $margin: null,
+    $padding: null,
+    $selector: "body > nav"
+) {
+    #{$selector} {
+        background: $background;
+        margin: $margin;
+        padding: $padding;
+
+        a {
+            display: block;
+        }
+
+        & > ul {
+            display: none;
+        }
+    }
+}
+
+// horizontal menu bar
+@mixin menu-extended (
+    $orientation: vertical,
+    $selector: "body > nav"
+) {
+    #{$selector} {
+        ul {
+            display: if($orientation == horizontal, flex, block);
+        }
+
+        & > a {
+            display: none;
+        }
+
+    }
+}
+
+// menu dropdown
+@mixin menu-dropdown (
+    $background: null,
+    $selector: "body > nav > ul"
+) {
+    #{$selector} {
+        display: block;
+        background: $background;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .1s ease-in-out;
+
+        &.active {
+            max-height: 1000px;
+            transition: max-height .5s ease-in-out;
+        }
+    }
+}
+
+
+

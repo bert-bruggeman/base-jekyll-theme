@@ -1,0 +1,6 @@
+// wrap mixin
+@mixin wrap($padding, $breakpoint) {
+  padding-right: calc(50% - #{($breakpoint / 2) - $padding});
+  padding-left: calc(50% - #{($breakpoint / 2) - $padding});
+}
+
