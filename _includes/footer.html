@@ -8,7 +8,7 @@
 
     {% if info.street or info.postal or info.locality %}
     <address class="adr">
-      {% if info.street %}<span class="street-address">{{ info.street }}</span>{% endif %}
+      {% if info.street %}<span class="street-address">{{ info.street }}</span><br />{% endif %}
       {% if info.postal %}<span class="postal">{{ info.postal }}</span>{% endif %}
       {% if info.locality %}<span class="locality">{{ info.locality }}</span>{% endif %}
     </address>
