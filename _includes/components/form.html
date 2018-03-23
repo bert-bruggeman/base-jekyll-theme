@@ -15,7 +15,10 @@
     <textarea name="{{ field.name }}"{% if field.required %} required{% endif %}></textarea>
 
     {% elsif field.type == 'select' %}
-    <select name="{{ field.name }}"{% if field.required %} required{% endif %}>
+    <select name="{{ field.name }}"{{% if field.required %} required{% endif %}>
+      {% if field.required %} required
+        <option value=""></option>
+      {% endif %}>
       {% for option in field.options %}
       <option value="{{ option }}">{{ option }}</option>
       {% endfor %}
