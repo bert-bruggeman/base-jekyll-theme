@@ -12,10 +12,10 @@
     {% endif %}
 
     {% if field.type == 'textarea' %}
-    <textarea name="{{ field.name }}"{% if field.required %} required{% endif %}></textarea>
+    <textarea class="input" name="{{ field.name }}"{% if field.required %} required{% endif %}></textarea>
 
     {% elsif field.type == 'select' %}
-    <select name="{{ field.name }}"{% if field.required %} required{% endif %}>
+    <select class="input" name="{{ field.name }}"{% if field.required %} required{% endif %}>
       {% if field.required %}
       <option value="">{{ site.data.vocabulary.no-option }}</option>
       {% endif %}
@@ -27,7 +27,7 @@
     {% elsif field.type == 'checkboxes' %}
     <fieldset class="checkboxes">
       {% for option in field.options %}
-        <input type="checkbox" name="{{ field.name }}" id="checkbox-{{ option | slugify }}" value="{{ option }}" />
+        <input class="input" type="checkbox" name="{{ field.name }}" id="checkbox-{{ option | slugify }}" value="{{ option }}" />
         <label for="checkbox-{{ option | slugify }}">{{ option }}</label>
       {% endfor %}
     </fieldset>
@@ -35,7 +35,7 @@
     {% elsif field.type == 'radios' %}
     <fieldset class="radios">
       {% for option in field.options %}
-        <input type="radio" name="{{ field.name }}" id="radio-{{ option | slugify }}" value="{{ option }}" />
+        <input class="input" type="radio" name="{{ field.name }}" id="radio-{{ option | slugify }}" value="{{ option }}" />
         <label for="radio-{{ option | slugify }}">{{ option }}</label>
       {% endfor %}
     </fieldset>
@@ -45,10 +45,10 @@
 
     {% elsif field.type == 'date' %}
     {% assign flatpickr = true %}
-    <input type="text" data-datepicker name="{{ field.name }}"{% if field.placeholder %} placeholder="{{ field.placeholder }}"{% endif %}{% if field.required %} required{% endif %}/>
+    <input class="input" type="text" data-datepicker name="{{ field.name }}"{% if field.placeholder %} placeholder="{{ field.placeholder }}"{% endif %}{% if field.required %} required{% endif %}/>
 
     {% else %}
-    <input type="{{ field.type }}" name="{{ field.name }}"{% if field.placeholder %} placeholder="{{ field.placeholder }}"{% endif %}{% if field.required %} required{% endif %}/>
+    <input class="input" type="{{ field.type }}" name="{{ field.name }}"{% if field.placeholder %} placeholder="{{ field.placeholder }}"{% endif %}{% if field.required %} required{% endif %}/>
     {% endif %}
 
   </div>
