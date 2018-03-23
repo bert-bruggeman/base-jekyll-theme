@@ -24,7 +24,7 @@ layout: compress
     {% include_cached footer.html %}
     {% include_cached scripts.html %}
 
-    {% asset css/non-critical %}
+    {% asset css/non-critical !type %}
     <link href="https://fonts.googleapis.com/css?family={{ site.webfont.non-critical }}" rel="stylesheet">
 
   </body>
