@@ -12,13 +12,10 @@ layout: compress
     {% include_cached svg/icons.svg %}
 
     <h1 class="hidden">{{ site.title }}</h1>
+
     {% include header.html %}
 
-    {% if page.image %}
-    <figure id="banner">
-        {% include components/image.html image=page.image style="banner" %}
-    </figure>
-    {% endif %}
+    {% include banner.html %}
 
     <main id="main">
       {{ content }}
