@@ -11,11 +11,11 @@
         {{ include.content | markdownify | replace: "\", "<br/>" }}
 
         {% if include.link %}
-        {% include components/link.html url=include.url class=read-more title=site.data.vocabulary.read-more %}
+        {% include components/link.html url=include.url class="read-more" title=site.data.vocabulary.read-more %}
         {% endif %}
 
         {% if include.url%}
-        {% include components/link.html url=include.url class=read-more title=site.data.vocabulary.read-more %}
+        {% include components/link.html url=include.url class="read-more" title=site.data.vocabulary.read-more %}
         {% endif %}
 
     </div>
