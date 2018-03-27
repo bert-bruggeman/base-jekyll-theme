@@ -17,7 +17,7 @@
     {% elsif field.type == 'select' %}
     <select class="input" name="{{ field.name }}"{% if field.required %} required{% endif %}>
       {% if field.required %}
-      <option value="">{{ site.data.vocabulary.no-option }}</option>
+      <option value="">{{ field.label }}</option>
       {% endif %}
       {% for option in field.options %}
       <option value="{{ option }}">{{ option }}</option>
