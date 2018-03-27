@@ -2,7 +2,7 @@
 {% assign quality = site.image_styles.quality %}
 
 {% capture src %}
-{% asset '{{ include.image }}' @path magick:resize='{{ style.width }}'^x'{{ style.height }}'^ magick:crop='{{ style.width }}'x'{{ style.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}
+{% asset '{{ include.image }}' @path magick:resize='{{ style.width }}'^x'{{ style.height }}'^ magick:gravity=center magick:crop='{{ style.width }}'x'{{ style.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}
 {% endcapture %}
 
 <noscript>
