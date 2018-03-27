@@ -12,7 +12,7 @@
     {% if style.sizes %}
     {% for size in style.sizes %}
     <source media="({{ size.media }})" srcset="
-{% asset '{{ include.image }}' @path magick:resize='{{ size.width }}'^x'{{ size.height }}'^ magick:crop='{{ size.width }}'x'{{ size.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}">
+{% asset '{{ include.image }}' @path magick:resize='{{ size.width }}'^x'{{ size.height }}'^ magick:gravity=center magick:crop='{{ size.width }}'x'{{ size.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}">
     {% endfor %}
     {% endif %}
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
