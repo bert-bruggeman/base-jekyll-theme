@@ -1,7 +1,7 @@
 <ul{% if include.class %} class="{{ include.class }}"{% endif %}>
 {% for link in include.items %}
   <li>
-    <a {% if link.type %}class="{{ link.type }}" {% endif %}{% if item.link contains 'http' %} target="_blank"{% endif %}href="{{ link.url }}">{{ link.title }}</a>
+    <a {% if link.type %}class="{{ link.type }}" {% endif %}{% if link.url contains 'http' %} target="_blank"{% endif %}href="{{ link.url }}">{{ link.title }}</a>
   </li>
 {% endfor %}
 </ul>
