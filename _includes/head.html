@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.meta.title }}</title>
   <meta name="description" content="{{ page.meta.description }}">
-  {% include og-tags.html %}
-  {% include_cached favicons.html %}
+  {% include head/og-tags.html %}
+  {% include_cached head/favicons.html %}
   {% asset css/critical @inline !type %}
 </head>
