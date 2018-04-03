@@ -1,8 +1,9 @@
 {% assign style = site.image_styles[include.style] %}
 {% assign quality = site.image_styles.quality %}
+{% assign path = include.image | remove: "/media/" %}
 
 {% capture src %}
-{% asset '{{ include.image }}' @path magick:resize='{{ style.width }}'^x'{{ style.height }}'^ magick:gravity=center magick:crop='{{ style.width }}'x'{{ style.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}
+{% asset '{{ path }}' @path magick:resize='{{ style.width }}'^x'{{ style.height }}'^ magick:gravity=center magick:crop='{{ style.width }}'x'{{ style.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}
 {% endcapture %}
 
 <noscript>
@@ -12,9 +13,8 @@
     {% if style.sizes %}
     {% for size in style.sizes %}
     <source media="({{ size.media }})" srcset="
-{% asset '{{ include.image }}' @path magick:resize='{{ size.width }}'^x'{{ size.height }}'^ magick:gravity=center magick:crop='{{ size.width }}'x'{{ size.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}">
+    {% asset '{{ path }}' @path magick:resize='{{ size.width }}'^x'{{ size.height }}'^ magick:gravity=center magick:crop='{{ size.width }}'x'{{ size.height }}'+0+0 magick:quality='{{ quality }}' magick:compress=jpeg %}">
     {% endfor %}
     {% endif %}
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="lazyload" data-src="{{ src }}" alt="{{ include.alt }}" width="{{ style.width }}" height="{{ style.height }}">
 </picture>
-
