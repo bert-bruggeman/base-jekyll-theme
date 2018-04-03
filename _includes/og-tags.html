@@ -1,10 +1,9 @@
-{% capture og-image %}
 {% if page.image %}
-{{ page.image }}
+{% assign og-image = page.image %}
 {% else %}
-{{ site.data.info.image }}
+{% assign og-image = site.data.info.image %}
 {% endif %}
-{% endcapture %}
+
 <meta property="og:title" content="{{ page.meta.title }}" />
 <meta property="og:description" content="{{ page.meta.description }}" />
 <meta property="og:site_name" content="{{ site.data.info.title  }}" />
