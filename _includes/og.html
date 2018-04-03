@@ -1,0 +1,13 @@
+{% capture ogimage %}
+{% if page.image %}
+{{ page.image }}
+{% else %}
+{{ site.data.info.image }}
+{% endif %}
+{% endcapture %}
+<meta property="og:title" content="{{ page.meta.title }}" />
+<meta property="og:description" content="{{ page.meta.description }}" />
+<meta property="og:site_name" content="{{ site.data.info.title  }}" />
+<meta property="og:type" content="{{ page.og-type }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:image" content="{{ site.url }}{% asset '{{ ogimage | remove: "/media/" }}' @path magick:resize=1200^x1200^ magick:crop=1200x1200+0+0 magick:quality=75 magick:compress=jpeg %}" />
