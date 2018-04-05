@@ -6,12 +6,7 @@
     <ul data-nav-menu>
         {% for item in site.data.menu.links %}
             <li>
-                <a {% if item.link contains 'http' %} target="_blank"{% endif %} href="{{ item.link }}"{% if item.link == page.permalink or (item.link.size > 4 and page.permalink contains item.link) %} class="active"{% endif %}>
-                    {% if item.icon %}
-                    <svg class="icon-{{ item.icon }}">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-{{ item.icon }}" />
-                    </svg>
-                    {% endif %}
+                <a {% if item.url contains 'http' %} target="_blank"{% endif %} href="{{ item.url }}"{% if item.url == page.permalink or (item.url.size > 4 and page.permalink contains item.url) %} class="active"{% endif %}>
                     <span>{{ item.title }}</span>
                 </a>
             </li>
