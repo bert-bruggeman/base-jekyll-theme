@@ -1,4 +1,4 @@
-<a class="{{ include.class }}"{% if include.url contains 'http' %} target="_blank"{% endif %} href="{{ include.url }}" title="{{ include.title }}">
+<a class="{{ include.class }}"{% if include.url contains 'http' %} target="_blank"{% endif %} href="{{ include.url }}"{% if include.show-title %} title="{{ include.title }}"{% endif %}>
   {% if include.icon %}
   <svg class="icon icon-{{ include.icon }}">
   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-{{ include.icon }}" />
